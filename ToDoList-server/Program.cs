@@ -50,7 +50,7 @@ app.MapPost("/ToDos", async (Item item, ToDoDbContext db) =>
 });
 
 
-app.MapPut("/ToDos/{id}", async (ToDoDbContext db, int id, bool isComplete) =>{
+app.MapPut("/ToDos/{id}", async ( int id, bool isComplete,ToDoDbContext db) =>{
 
     var item = await db.Items.FindAsync(id);
     if (item == null) return Results.NotFound("task not found.");
