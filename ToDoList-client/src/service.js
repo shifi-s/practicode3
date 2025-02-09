@@ -17,7 +17,7 @@ export default {
   },
 
   addTask: async(name)=>{
-    console.log('addTask', )
+    
     await axios.post(`/ToDos`,{name:name,isComplete:false})
     return {};
   },
