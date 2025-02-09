@@ -28,7 +28,8 @@ app.UseCors("AllowAllOrigins");
 
 app.UseSwagger();
 app.UseSwaggerUI();
-app.MapGet("/", () => "Api is worked");
+
+app.MapGet("/", () => "Api is working");
 
 
 app.MapGet("/ToDos", async (ToDoDbContext db) =>
