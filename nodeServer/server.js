@@ -13,7 +13,7 @@ if (!API_KEY) {
 
 renderApi.auth(API_KEY);
 
-app.get("/", async (req, res) => {
+app.get("/services", async (req, res) => {
   try {
     const { data } = await renderApi.listServices({ includePreviews: "true", limit: "20" });
     res.json(data);
@@ -23,6 +23,7 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get('/',  ()=>"render account details")
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
