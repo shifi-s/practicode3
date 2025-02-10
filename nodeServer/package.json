@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start":"node server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -11,9 +11,8 @@
   "description": "",
   "dependencies": {
     "@api/render-api": "file:.api/apis/render-api",
+    "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "express": "^4.21.2"
   }
-
-
 }

@@ -1,23 +1,29 @@
-import renderApi from '@api/render-api';
-require('dotenv').config();
-const express = require('express');
-const renderApi = require('render-api');
+const express = require("express");
+require("dotenv").config();
+const renderApi = require("@api/render-api");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const API_KEY = process.env.RENDER_API_KEY;
 
-renderApi.auth(process.env.RENDER_API_KEY);
+if (!API_KEY) {
+  console.error("Missing RENDER_API_KEY in environment variables");
+  process.exit(1);
+}
 
-app.get('/apps', async (req, res) => {
-    try {
-        const { data } = await renderApi.listServices({ includePreviews: 'true', limit: '20' });
-        res.json(data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Failed to fetch applications', details: error.message });
-    }
+renderApi.auth(API_KEY);
+
+app.get("/", async (req, res) => {
+  try {
+    const { data } = await renderApi.listServices({ includePreviews: "true", limit: "20" });
+    res.json(data);
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    res.status(500).json({ error: "Failed to fetch services" });
+  }
 });
 
+
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
