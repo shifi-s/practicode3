@@ -22,7 +22,7 @@ app.get("/services", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch services" });
   }
 });
-
+app.get("/",async()=>"render account details")
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
