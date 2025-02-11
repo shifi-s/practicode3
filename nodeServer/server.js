@@ -23,8 +23,6 @@ app.get("/services", async (req, res) => {
   }
 });
 
-app.get('/',  ()=>"render account details")
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
