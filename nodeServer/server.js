@@ -13,7 +13,7 @@ if (!API_KEY) {
 
 renderApi.auth(API_KEY);
 
-app.get("/services", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const { data } = await renderApi.listServices({ includePreviews: "true", limit: "20" });
     res.json(data);
@@ -22,7 +22,7 @@ app.get("/services", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch services" });
   }
 });
-app.get("/",async()=>"render account details")
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
